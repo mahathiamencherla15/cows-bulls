@@ -1,0 +1,28 @@
+.header-container {
+  background: #073763ff;
+  color: white;
+  margin: 0 auto;
+  margin-top: $s-size;
+  margin-bottom: $m-size;
+  padding: $m-size 0;
+  text-align: center;
+  width: 60%;
+  border-radius: $m-size;
+}
+
+.header__title {
+  font-size: $xl-size;
+  font-weight: 300;
+  margin-top: 0;
+  padding: $m-size;
+}
+
+.header-container a {
+  text-decoration: none;
+  padding: $m-size;
+  color: white;
+}
+
+.a-border {
+  border-right: 1px solid white;
+}
