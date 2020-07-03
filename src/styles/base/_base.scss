@@ -19,7 +19,16 @@ button:disabled {
     cursor: default;
 }
 
-.is-active {
+.is-active-2 {
     font-weight: bold;
+    padding-right: $s-size;
+    padding-bottom: $s-size;
+    border-bottom: 1px solid white;
   }
 
+.is-active-1 {
+    font-weight: bold;
+    padding-left: $s-size;
+    padding-bottom: $s-size;
+    border-bottom: 1px solid white;
+  }

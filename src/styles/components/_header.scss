@@ -6,7 +6,7 @@
   margin-bottom: $m-size;
   padding: $m-size 0;
   text-align: center;
-  width: 60%;
+  width: 70%;
   border-radius: $m-size;
 }
 
@@ -15,14 +15,19 @@
   font-weight: 300;
   margin-top: 0;
   padding: $m-size;
+  letter-spacing: $m-size;
 }
 
 .header-container a {
   text-decoration: none;
-  padding: $m-size;
   color: white;
+  letter-spacing: 0.5rem;
 }
 
 .a-border {
-  border-right: 1px solid white;
+  padding-right: $m-size;
+}
+
+.a-border-2 {
+  padding-left: $m-size;
 }
