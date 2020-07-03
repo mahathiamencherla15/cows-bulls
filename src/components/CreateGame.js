@@ -50,3 +50,5 @@ compGame = () => {
   }
  
 }
+
+// keep track of state for the rules part also because when they say start game you'll have to provide options to pick difficulty
