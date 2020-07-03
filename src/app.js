@@ -2,13 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-
-const jsx = (
-  <div>
-    <p>Boiler plate</p>
-  </div>
-);
+import AppRouter from './routers/AppRouter';
 
 
 
-ReactDOM.render(jsx, document.getElementById('app'))
+
+
+ReactDOM.render(<AppRouter/>, document.getElementById('app'))
