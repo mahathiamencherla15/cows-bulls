@@ -11,6 +11,10 @@
     padding: 24px;
     width: 50%;
     padding-bottom: $m-size;
+
+    @media (min-width: $desktop-breakpoint) {
+      width: 30%
+    }
 }
 
 .join-form input {
