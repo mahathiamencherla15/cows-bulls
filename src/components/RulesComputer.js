@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RulesComputer = () => (
+const RulesComputer = (props) => (
   <div>
     <h2>Rules for playing against Computer</h2>
     <p>Blahhhhhhhhhhhhhhh</p>
@@ -9,7 +9,10 @@ const RulesComputer = () => (
       <option>Medium - 5 words</option>
       <option>Hard - 6 words</option>
     </select>
-    <button>Start Game</button>
+    <button onClick={(e) => {
+      e.preventDefault()
+      props.history.push('/play/CvP')
+    }}>Start Game</button>
   </div>
 );
 
