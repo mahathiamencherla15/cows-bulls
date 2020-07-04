@@ -1,8 +1,8 @@
 import React from 'react';
 
 const RulesComputer = () => (
-  <div>
-    <h2>Rules for playing against Computer</h2>
+  <div className="rules-container">
+    <h2 className="rules-header">Rules for playing against Computer</h2>
     <p>Blahhhhhhhhhhhhhhh</p>
     <select>
       <option>Easy - 4 words</option>
