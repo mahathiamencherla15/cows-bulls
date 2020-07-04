@@ -1,5 +1,5 @@
 .join-container {
-    margin-top: 10rem;;
+    margin-top: 10rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,12 +9,12 @@
   box-shadow: 0px 0px 17px 1px $shadow;
     background: white;
     padding: 24px;
-    width: 350px;
+    width: 50%;
     padding-bottom: $m-size;
 }
 
 .join-form input {
-    margin-bottom: 16px;
+    margin-bottom: $m-size;
     width: 90%;
     border: none;
     padding: 20px;
@@ -25,14 +25,16 @@
 .join-form button {
   cursor: pointer;
   padding: 12px;
-  background: $dark-blue;
+  background: $light-blue;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: $l-size;
   transition: background .3s ease;
   text-align: center;
   margin: 0 auto;
   display: block;
+  width: 40%;
+  letter-spacing: 0.1rem;
 }
 
 .join-form button:hover {
@@ -44,7 +46,8 @@
   font-family: 'Oswald';
   border-bottom: 1px solid black;
   font-weight: 300;
-  font-size: $l-size;
+  font-size: $xl-size;
   text-align: center;
+  letter-spacing: 0.2rem;
 }
 
