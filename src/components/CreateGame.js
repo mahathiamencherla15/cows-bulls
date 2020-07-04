@@ -28,16 +28,26 @@ compGame = () => {
 }
   render() {
     return (
-      <div>
-      <p>Game type</p>
-      <p>Rules</p>
-      <div>
+      <div className="content-container">
+        <div className="create-wrapper">
+        <div className="create-header">
+        <p>Game Type</p>
+        <p>Rules</p>
+        </div>
+      <div className="create-body">
+        <div className="create-item">
         <button onClick={this.teamsGame}>Teams</button>
         <a href="/rules_teams">Teams</a>
-        <button onClick={this.multiGame}>Multiplayer</button>
-        <a href="/rules_multiplayer">Multiplayer</a>
+        </div>
+        <div className="create-item">
+        <button  onClick={this.multiGame}>Multiplayer</button>
+        <a  href="/rules_multiplayer">Multiplayer</a>
+        </div>
+        <div className="create-item">
         <button onClick={this.compGame}>Computer</button>
         <a href="/rules_computer">Computer</a>
+        </div>
+      </div>
       </div>
       {this.state.selectedOption === 'teams' && <TeamsModal selectedOption={this.state.selectedOption}
             handleSelectedOption={this.handleSelectedOption}/>}
