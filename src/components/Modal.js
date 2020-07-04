@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-const MultiModal = (props) => (
+const TeamsModal = (props) => (
     <Modal
     isOpen={!!props.selectedOption}
     onRequestClose={props.handleSelectedOption}
@@ -9,7 +9,7 @@ const MultiModal = (props) => (
     closeTimeoutMS={200}
     ariaHideApp={false}
     className="modal">
-        <h3 className="modal__title">Multiplayer</h3>
+        <h3 className="modal__title">{props.selectedOption}</h3>
         {/* {props.selectedOption && <p className="modal__body">{props.selectedOption}</p>} */}
         <select>
           <option>Easy - 4 words</option>
@@ -20,4 +20,4 @@ const MultiModal = (props) => (
     </Modal>
 )
 
-export default MultiModal;
+export default TeamsModal;

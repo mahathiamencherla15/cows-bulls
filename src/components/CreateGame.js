@@ -1,7 +1,5 @@
 import React from 'react';
-import TeamsModal from './TeamsModal';
-import MultiModal from './MultiModal';
-import CompModal from './CompModal';
+import Modal from './Modal';
 
 export default class CreateGame extends React.Component {
   state = {
@@ -13,17 +11,17 @@ export default class CreateGame extends React.Component {
 }
 teamsGame = () => {
   this.setState(() => ({
-    selectedOption: "teams"
+    selectedOption: "Teams"
 }))
 }
 multiGame = () => {
   this.setState(() => ({
-    selectedOption: "multi"
+    selectedOption: "Multiplayer"
 }))
 }
 compGame = () => {
   this.setState(() => ({
-    selectedOption: "comp"
+    selectedOption: "Computer"
 }))
 }
   render() {
@@ -49,12 +47,12 @@ compGame = () => {
         </div>
       </div>
       </div>
-      {this.state.selectedOption === 'teams' && <TeamsModal selectedOption={this.state.selectedOption}
-            handleSelectedOption={this.handleSelectedOption}/>}
-      {this.state.selectedOption === 'multi' && <MultiModal selectedOption={this.state.selectedOption}
-            handleSelectedOption={this.handleSelectedOption}/>}   
-      {this.state.selectedOption === 'comp' && <CompModal selectedOption={this.state.selectedOption}
-            handleSelectedOption={this.handleSelectedOption}/>}         
+      <Modal selectedOption={this.state.selectedOption}
+            handleSelectedOption={this.handleSelectedOption}/>
+      <Modal selectedOption={this.state.selectedOption}
+            handleSelectedOption={this.handleSelectedOption}/>   
+      <Modal selectedOption={this.state.selectedOption}
+            handleSelectedOption={this.handleSelectedOption}/>        
     </div>
     )
   }
