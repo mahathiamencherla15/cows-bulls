@@ -2,12 +2,14 @@
   margin: 0 auto;
   text-align: center;
   width: 70%;
-  background: url('/cows-bulls/public/images/bull.png');
 }
 
 .header__title {
   font-family: 'Oswald';
-  background: $dark-blue;
+  // background: $dark-blue;
+  background: url("/images/cows-bulls.png");
+  background-size: cover;
+  height: 100%;
   color: white;
   margin-top: $s-size;
   margin-bottom: $m-size;
