@@ -43,9 +43,9 @@
   font-size: 1.8rem;
     outline: none;
     border: none;
-    background-color: #de5246;
+    background-color: $red;
   cursor: pointer;
   &:hover {
-    background-color: darken(#de5246, 10%);
+    background-color: darken($red, 10%);
   }
 }
