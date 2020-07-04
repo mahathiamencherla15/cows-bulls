@@ -1,14 +1,15 @@
 import React from 'react';
 
 const JoinGame = ( ) => (
-  <div>
-    <form>
-    <label>Display name</label>
+  <div className="join-container">
+    <div className="join-box">
+    <h2 className="join-box__title">Hello!</h2>
+    <form className="join-form">
     <input type="text" name="username" placeholder="Enter your name" required/>
-    <label>Room</label>
     <input type="text" name="room" placeholder="Enter room ID" required/>
     <button>Join!</button>
     </form>
+  </div>
   </div>
 )
 

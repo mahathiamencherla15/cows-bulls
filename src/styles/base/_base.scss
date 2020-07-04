@@ -1,13 +1,17 @@
 //@import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
+  
 
 html {
     font-size: 62.5%;
+    height: 100%;
+    background: linear-gradient(#f2f2f2ff, #a6a6a6ff);
+    background-size: cover;
 }
 
 body {
-    font-family: 'Oswald';
+    font-family: Arial, Helvetica, sans-serif;
     font-size: $m-size;
 }
 
@@ -23,12 +27,12 @@ button:disabled {
     font-weight: bold;
     padding-right: $s-size;
     padding-bottom: $s-size;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
   }
 
 .is-active-1 {
     font-weight: bold;
     padding-left: $s-size;
     padding-bottom: $s-size;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid black;
   }

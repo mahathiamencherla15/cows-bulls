@@ -1,27 +1,27 @@
 .header-container {
-  background: #073763ff;
-  color: white;
   margin: 0 auto;
-  margin-top: $s-size;
-  margin-bottom: $m-size;
-  padding: $m-size 0;
   text-align: center;
   width: 70%;
-  border-radius: $m-size;
 }
 
 .header__title {
+  font-family: 'Oswald';
+  background: $dark-blue;
+  color: white;
+  margin-top: $s-size;
+  margin-bottom: $m-size;
   font-size: $xl-size;
   font-weight: 300;
-  margin-top: 0;
-  padding: $m-size;
+  padding: $xl-size;
   letter-spacing: $m-size;
+  border-radius: $m-size;
 }
 
 .header-container a {
   text-decoration: none;
-  color: white;
+  color: black;
   letter-spacing: 0.5rem;
+  font-size: $m-size;
 }
 
 .a-border {
@@ -30,4 +30,11 @@
 
 .a-border-2 {
   padding-left: $m-size;
+}
+
+@media (min-width: $desktop-breakpoint) {
+  .header__title {
+    padding: $xxl-size;
+    font-size: $xxl-size;
+  }
 }
