@@ -23,20 +23,6 @@ export const generateWord = (difficulty) => {
     return(word)  
 }
 
-export const countWords = () => {
-    let wordList = []
-    let word = ""
-    let len = 0
-    let i = 0
-    while(i < 8000) {
-        i++
-        word = randomWords({exactly: 1,  maxLength: 6})[0]        
-        len = word.length
-        if (len > 3 && !(wordList.includes(word)))
-            wordList.push(word)        
-    }
-    return wordList
-}
 //bull - same location; cow - letter is present
 export const getCowsAndBulls = (answer, guess) => {
     let cow = 0
