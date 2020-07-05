@@ -20,7 +20,12 @@
   border-radius: $m-size;
 }
 
-.header-container a {
+.game-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.game-container a {
   text-decoration: none;
   color: black;
   letter-spacing: 0.3rem;

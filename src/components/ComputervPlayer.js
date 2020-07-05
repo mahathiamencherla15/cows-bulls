@@ -76,7 +76,8 @@ render() {
       key={i} 
       id = {i}      
       className="letterBox" type="text" 
-      autoComplete="off"      
+      autoComplete="off"   
+      autoFocus   
       onChange={this.handleChange} 
       onKeyPress={event => {
         if (event.key === 'Enter') {
