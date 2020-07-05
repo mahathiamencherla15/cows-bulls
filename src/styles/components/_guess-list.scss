@@ -1,0 +1,72 @@
+.turn_container, .turn_container_title{
+    margin: $m-size $l-size;    
+    display: flex;
+    flex-direction: row;
+    width: inherit;        
+}
+
+
+.Slno, .Slno_title {
+    display: flex;
+    flex-grow: 2;
+}
+
+.Guess_title {
+    display: flex;
+    flex-grow: 90;      
+    justify-content: space-between;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;  
+    align-items: center;
+    justify-content: center;  
+}
+
+.Guess{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    flex-grow: 0.2;
+    max-width: 100%;
+}
+
+.Guess input {
+    text-align: center;    
+    font-size: x-large;
+    border-radius: 5px;
+    border: none; 
+    margin-right: 1rem;   
+    margin-left: 1rem;   
+}
+
+.Guess input :focus{
+    //have to do
+}
+
+.Score, .Score_title {
+    display: flex;
+    flex-grow: 2;
+    justify-content: space-between;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.Score p {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.letterBox {
+    display: flex;
+    width: 4%;
+    height:80%;
+    margin: auto 0;   
+    min-width: 3rem;    
+    
+}
+
+

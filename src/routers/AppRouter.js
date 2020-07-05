@@ -19,7 +19,7 @@ const AppRouter = () => (
         <Route path="/rules_teams" component={RulesTeams}/>
         <Route path="/rules_multiplayer" component={RulesMultiplayer}/>
         <Route path="/rules_computer" component={RulesComputer}/>
-        <Route path="/play/CvP" component={ComputervPlayer}/>
+        <Route path="/play/CvP/:id" component={ComputervPlayer}/>
         <Route component={NotFoundPage} />
       </Switch>
     </div>
