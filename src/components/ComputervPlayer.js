@@ -8,14 +8,8 @@ export default class ComputervPlayer extends React.Component{
     super(props)
     this.state = {
       answer: generateWord(parseInt(this.props.match.params.id, 10)),
-      count : 1,
-      guess : [{
-        word: "toys",
-        cow: 2,
-        bull: 4
-      }
-
-      ],
+      count : 0,
+      guess : [],
       currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
     }        
   }
@@ -23,13 +17,19 @@ export default class ComputervPlayer extends React.Component{
 addGuess = (word, cow, bull) => {
     this.setState((state) => ({
       count : state.count + 1,
-      guess : state.guess.push({
+      guess : state.guess.concat({
         word,
         cow,
         bull
       })
     }))
 }  
+
+clearCurrGuess = () => {
+  this.setState((state) => ({
+    currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
+  }))
+}
 
 handleChange = (e) => {
   let value = e.target.value  
@@ -43,8 +43,8 @@ handleChange = (e) => {
       state.currGuess[id] = value.toLowerCase()    
     return({
       currGuess : state.currGuess
-    })    
-  })   
+    })   
+  })       
 }
 
 handleSubmit = () => {
@@ -58,15 +58,14 @@ handleSubmit = () => {
     if(score.bull === this.state.answer.length){
       alert("You won the game!!")
     }else{
-      this.addGuess(currGuess.join(""), score.bull, score.cow)
-      console.log("addedstate",this.state)
+      this.addGuess(currGuess.join(""), score.cow, score.bull) 
+      this.clearCurrGuess()     
     }    
   } 
   
 }
 
-render() { 
-  console.log("stateBeforePassing",this.state) 
+render() {   
   const difficulty = parseInt(this.props.match.params.id, 10)  
   //console.log(this.state.answer)
 

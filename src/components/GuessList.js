@@ -8,29 +8,42 @@ export default class GuessList extends React.Component {
 
     render(){         
         //console.log("prev",this.props)
+        const length = this.props.prevGuess.length
         return (
         <div>
           {            
-            this.props.prevGuess.length === 0 ? (
+            length === 0 ? (
               null
             ) : (
                 this.props.prevGuess.map((guess, index) => {
                   return (
-                <div className="turn_container">
-                  <div className="Slno"><p>{index + 1}</p></div>
-                    
+                    <div className="turn_container" key = {index+length+1} >
+                      <div className="Slno" key = {index+length+2} >
+                        <p key = {index+length+3} >
+                          {index + 1}
+                        </p>
+                      </div>
+                        
                       <GuessListItem 
                           difficulty={this.props.difficulty} 
                           value = {guess.word}
                           count = {index}                           
                           key = {index}               
-                        />
-                    
-                    <div className="Score">      
-                      <div><p>{guess.cow}</p></div>
-                      <div><p>{guess.bull}</p></div>
-                    </div>   
-                </div>
+                      />
+                        
+                      <div className="Score" key = {index+length+4} >      
+                        <div key = {index+length+5} >
+                          <p key = {index+length+6} >
+                            {guess.cow}
+                          </p>
+                        </div>
+                        <div key = {index+length+7}>
+                          <p key = {index+length+8} >
+                            {guess.bull}
+                          </p>
+                        </div>
+                      </div>   
+                    </div>
                   )
                 })
               )
