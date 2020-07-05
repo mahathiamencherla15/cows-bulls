@@ -21,6 +21,9 @@ export default class RulesComputer extends React.Component {
         <Link to={`/play/CvP/${this.state.difficulty}`}>
           <button>Start Game</button>
         </Link>
+        <Link to="/">
+          <button>Home</button>
+        </Link>
         
       </div>
     )

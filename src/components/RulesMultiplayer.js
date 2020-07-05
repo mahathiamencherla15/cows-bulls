@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header';
+import { Link } from 'react-router-dom';
 
 const RulesMultiplayer = () => (
   <div className="rules-container">
@@ -10,7 +10,9 @@ const RulesMultiplayer = () => (
       <option>Medium - 5 words</option>
       <option>Hard - 6 words</option>
     </select>
-    <button>Start Game</button>
+    <Link to="/">
+          <button>Home</button>
+        </Link>
   </div>
 );
 
