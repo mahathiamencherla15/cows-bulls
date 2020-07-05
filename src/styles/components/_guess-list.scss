@@ -1,67 +1,88 @@
-.turn_container, .turn_container_title{
-    margin: $m-size $l-size;    
+.turn_container {    
+    display: flex;
+    flex-direction: row;    
+    //background: limegreen; 
+    @media(max-width: $desktop-breakpoint) {        
+        height: 4rem;
+    }
+}
+
+// .turn_container:first-of-type{
+//     border-top-right-radius: 5px;
+//     border-top-left-radius: 5px
+// }
+
+// .turn_container:last-of-type{
+//     border-bottom-left-radius: 5px;
+//     border-bottom-right-radius: 5px
+// }
+
+.turn_container_title{    
     display: flex;
     flex-direction: row;
-    width: inherit;        
+    justify-content: flex-end;
+    //background: blueviolet;
+    @media(max-width: $desktop-breakpoint) {
+        font-size: small;
+    }
+}
+.turn_container_title div{    
+    margin: 0 2%;    
 }
 
-.Slno, .Slno_title {
+.turn_container_title div:last-child{    
+    margin-right:2%;    
+}
+
+.Slno {
     display: flex;
     flex-grow: 1;
-    padding-left: 2rem;
+    padding-left: 2%;
     font-size: $m-size;
-    //background: red;
+    border-right: 4px solid black ;
+    //background: red;    
 }
 
-.Slno_title {
-    flex-grow: 1;
-    padding-left: 0rem;
-}
-
-.Guess, .Guess_title{
+.Guess{
     display: flex;
     flex-direction: row;
     flex-grow: 2;
     justify-content: space-around;
-    margin-right: 2rem;
-    margin-left: 2rem;     
+    margin-right: 2.5%;
+    margin-left: 2.5%;     
     align-items: center; 
+    border-right: 4px solid black ;
     //background: blue;     
 }
 
-.Guess_title{
-    flex-grow: 2.1;
-}
-
-.Score, .Score_title {
+.Score {
     display: flex;
     flex-grow: 1;
     justify-content: space-around;
+    text-align: right;  
+    @media(max-width: $desktop-breakpoint) {
+        padding-right: 1rem;
+    }  
     //background: green;     
 }
 
-.Score_title{
-    flex-grow: 0.97;
-}
-
-.Guess_title .letterBox{
-    border: none;
-    border-radius: 2px;
-    border-bottom: outset;
-    background: none;
-}
-
-.Score p {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+.Score div {   
     min-width: $m-size;
+    @media(max-width: $desktop-breakpoint) {
+        font-size: small;
+    }
+
 }
 
 .letterBox {
-    max-width: 3rem;
+    max-width: 5rem;
     height:70%;
     border-radius: 2px;
     border: none;
-    outline: 1px;
+    box-shadow: 0 0 0 1pt grey;
     text-align: center;
+    @media(max-width: $desktop-breakpoint) {
+        max-width: 2rem;
+        height: 50%;
+    }
 }

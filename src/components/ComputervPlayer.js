@@ -1,5 +1,5 @@
 import React from 'react';
-import {generateWord, getCowsAndBulls, hasRepeatingLetter} from '../gameplay/gameComputer'
+import {generateWord, getCowsAndBulls, hasRepeatingLetter, countWords} from '../gameplay/gameComputer'
 import GuessList from './GuessList'
 import GuessTitle from './GuessTitle'
 
@@ -49,7 +49,11 @@ handleChange = (e) => {
 
 handleSubmit = () => {
   const currGuess = this.state.currGuess
-  if (currGuess.includes("")){
+
+  console.log("a",countWords().length)
+  //console.log(countWords())
+
+  if (currGuess.includes("") ){
     alert("Please enter a valid word")
   }else if (hasRepeatingLetter(currGuess.join(""))){
     alert("The word should a have unique characters")
@@ -61,6 +65,8 @@ handleSubmit = () => {
       this.addGuess(currGuess.join(""), score.cow, score.bull) 
       this.clearCurrGuess()     
     }    
+
+    
   } 
   
 }
