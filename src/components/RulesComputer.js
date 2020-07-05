@@ -10,8 +10,8 @@ export default class RulesComputer extends React.Component {
   }
   render () {
     return(
-      <div>
-        <h2>Rules for playing against Computer</h2>
+      <div className="rules-container">
+        <h2 className="rules-header">Rules for playing against Computer</h2>
         <p>Blahhhhhhhhhhhhhhh</p>
         <select onChange={this.handleDropdownChange}>
           <option value="4">Easy - 4 words</option>
