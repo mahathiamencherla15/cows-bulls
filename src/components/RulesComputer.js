@@ -26,3 +26,4 @@ export default class RulesComputer extends React.Component {
     )
   }  
 }
+

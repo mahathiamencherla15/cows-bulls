@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from './Modal';
+import AllModal from './Modal';
 
 export default class CreateGame extends React.Component {
   state = {
@@ -47,11 +47,11 @@ compGame = () => {
         </div>
       </div>
       </div>
-      <Modal selectedOption={this.state.selectedOption}
+      <AllModal selectedOption={this.state.selectedOption}
             handleSelectedOption={this.handleSelectedOption}/>
-      <Modal selectedOption={this.state.selectedOption}
+      <AllModal selectedOption={this.state.selectedOption}
             handleSelectedOption={this.handleSelectedOption}/>   
-      <Modal selectedOption={this.state.selectedOption}
+      <AllModal selectedOption={this.state.selectedOption}
             handleSelectedOption={this.handleSelectedOption}/>        
     </div>
     )
