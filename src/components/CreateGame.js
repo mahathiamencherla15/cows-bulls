@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import AllModal from './Modal';
 
 export default class CreateGame extends React.Component {
@@ -26,6 +27,9 @@ compGame = () => {
 }
   render() {
     return (
+     <div className="game-container">
+      <NavLink to="/" activeClassName="is-active-1" className="a-border" exact={true}>Create Game</NavLink>
+      <NavLink to="/join" activeClassName="is-active-2" className="a-border-2">Join Game</NavLink><br></br><br></br>
       <div className="content-container">
         <div className="create-wrapper">
         <div className="create-header">
@@ -53,6 +57,7 @@ compGame = () => {
             handleSelectedOption={this.handleSelectedOption}/>   
       <AllModal selectedOption={this.state.selectedOption}
             handleSelectedOption={this.handleSelectedOption}/>        
+    </div>
     </div>
     )
   }
