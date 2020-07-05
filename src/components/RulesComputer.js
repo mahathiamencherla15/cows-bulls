@@ -18,7 +18,7 @@ export default class RulesComputer extends React.Component {
           <option value="5">Medium - 5 words</option>
           <option value="6">Hard - 6 words</option>
         </select>
-        <Link to={`/play/CvP/${this.state.difficulty}`}>
+        <Link to={`/play/Computer/${this.state.difficulty}`}>
           <button>Start Game</button>
         </Link>
         
