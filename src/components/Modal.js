@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 
-const TeamsModal = (props) => (
+const AllModal = (props) => (
     <Modal
     isOpen={!!props.selectedOption}
     onRequestClose={props.handleSelectedOption}
@@ -9,15 +9,15 @@ const TeamsModal = (props) => (
     closeTimeoutMS={200}
     ariaHideApp={false}
     className="modal">
-        <h3 className="modal__title">{props.selectedOption}</h3>
-        {/* {props.selectedOption && <p className="modal__body">{props.selectedOption}</p>} */}
+        <h2 className="modal__title">{props.selectedOption}</h2>
         <select>
           <option>Easy - 4 words</option>
           <option>Medium - 5 words</option>
           <option>Hard - 6 words</option>
-        </select>
-        <button className="button" onClick={props.handleSelectedOption}>Start Game</button>
+        </select><br></br>
+        <button className="button">Start Game</button>
+        <button className="button" onClick={props.handleSelectedOption}>Close</button>
     </Modal>
 )
 
-export default TeamsModal;
+export default AllModal;

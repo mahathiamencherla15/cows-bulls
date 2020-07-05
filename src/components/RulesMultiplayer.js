@@ -2,8 +2,8 @@ import React from 'react';
 import Header from './Header';
 
 const RulesMultiplayer = () => (
-  <div>
-    <h2>Rules for Multiplayer</h2>
+  <div className="rules-container">
+    <h2 className="rules-header">Rules for Multiplayer</h2>
     <p>Blahhhhhhhhhhhhhhh</p>
     <select>
       <option>Easy - 4 words</option>
