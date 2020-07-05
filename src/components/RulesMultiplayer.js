@@ -10,6 +10,7 @@ const RulesMultiplayer = () => (
       <option>Medium - 5 words</option>
       <option>Hard - 6 words</option>
     </select>
+    <button>Start Game</button>
     <Link to="/">
           <button>Home</button>
         </Link>

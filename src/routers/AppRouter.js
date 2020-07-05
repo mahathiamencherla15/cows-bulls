@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import CreateGame from '../components/CreateGame';
 import JoinGame from '../components/JoinGame';
 import NotFoundPage from '../components/NotFoundPage';
@@ -22,6 +23,7 @@ const AppRouter = () => (
         <Route path="/play/CvP/:id" component={ComputervPlayer}/>
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer/>
     </div>
   </BrowserRouter>
 );
