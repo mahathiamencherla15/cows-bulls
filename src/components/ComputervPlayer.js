@@ -1,6 +1,7 @@
 import React from 'react';
 import {generateWord, getCowsAndBulls, hasRepeatingLetter} from '../gameplay/gameComputer'
 import GuessList from './GuessList'
+import GuessTitle from './GuessTitle'
 
 export default class ComputervPlayer extends React.Component{
   constructor (props) {
@@ -90,14 +91,7 @@ render() {
 
       <div className="game_container">          
 
-        <div className="turn_container_title">
-          <div className="Slno_title"><p>Sl.No</p></div>
-          <div className="Guess_title"><p>Your Guess</p> </div>
-          <div className="Score_title">      
-            <div><p>C</p></div>
-            <div><p>B</p></div>
-          </div>
-        </div>
+        <GuessTitle difficulty={difficulty} />
 
         <GuessList 
           prevGuess={this.state.guess}           

@@ -7,57 +7,60 @@
 
 .Slno, .Slno_title {
     display: flex;
-    background: red;
     flex-grow: 1;
     padding-left: 2rem;
     font-size: $m-size;
+    //background: red;
 }
 
-.Guess_title {
-    display: flex;
-    flex-grow: 3.5;  
-    background: green;        
-    margin-right: 2rem;
-    margin-left: 2rem;
-    padding-right: 2rem;
-    padding-left: 2rem;  
-    align-items: center;
-    justify-content: center;    
+.Slno_title {
+    flex-grow: 1;
+    padding-left: 0rem;
 }
 
-.Guess{
+.Guess, .Guess_title{
     display: flex;
     flex-direction: row;
     flex-grow: 2;
     justify-content: space-around;
-    background: pink;
     margin-right: 2rem;
     margin-left: 2rem;     
-    align-items: center;      
+    align-items: center; 
+    //background: blue;     
 }
 
-// .Guess input {
-//     text-align: center;    
-//     font-size: x-large;
-//     border-radius: 5px;
-//     border: none; 
-//     margin-right: 1rem;   
-//     margin-left: 1rem;   
-// }
+.Guess_title{
+    flex-grow: 2.1;
+}
 
 .Score, .Score_title {
     display: flex;
-    background: greenyellow;
     flex-grow: 1;
-    justify-content: space-around;    
+    justify-content: space-around;
+    //background: green;     
+}
+
+.Score_title{
+    flex-grow: 0.97;
+}
+
+.Guess_title .letterBox{
+    border: none;
+    border-radius: 2px;
+    border-bottom: outset;
+    background: none;
 }
 
 .Score p {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    min-width: $m-size;
 }
 
 .letterBox {
     max-width: 3rem;
     height:70%;
+    border-radius: 2px;
+    border: none;
+    outline: 1px;
 }
