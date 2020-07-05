@@ -7,6 +7,7 @@ import NotFoundPage from '../components/NotFoundPage';
 import RulesTeams from '../components/RulesTeams';
 import RulesMultiplayer from '../components/RulesMultiplayer';
 import RulesComputer from '../components/RulesComputer';
+import ComputervPlayer from '../components/ComputervPlayer'
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -18,6 +19,7 @@ const AppRouter = () => (
         <Route path="/rules_teams" component={RulesTeams}/>
         <Route path="/rules_multiplayer" component={RulesMultiplayer}/>
         <Route path="/rules_computer" component={RulesComputer}/>
+        <Route path="/play/CvP/:id" component={ComputervPlayer}/>
         <Route component={NotFoundPage} />
       </Switch>
     </div>
@@ -25,3 +27,4 @@ const AppRouter = () => (
 );
 
 export default AppRouter;
+

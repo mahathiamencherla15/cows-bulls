@@ -1,0 +1,67 @@
+.turn_container, .turn_container_title{
+    margin: $m-size $l-size;    
+    display: flex;
+    flex-direction: row;
+    width: inherit;        
+}
+
+.Slno, .Slno_title {
+    display: flex;
+    flex-grow: 1;
+    padding-left: 2rem;
+    font-size: $m-size;
+    //background: red;
+}
+
+.Slno_title {
+    flex-grow: 1;
+    padding-left: 0rem;
+}
+
+.Guess, .Guess_title{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    justify-content: space-around;
+    margin-right: 2rem;
+    margin-left: 2rem;     
+    align-items: center; 
+    //background: blue;     
+}
+
+.Guess_title{
+    flex-grow: 2.1;
+}
+
+.Score, .Score_title {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    //background: green;     
+}
+
+.Score_title{
+    flex-grow: 0.97;
+}
+
+.Guess_title .letterBox{
+    border: none;
+    border-radius: 2px;
+    border-bottom: outset;
+    background: none;
+}
+
+.Score p {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    min-width: $m-size;
+}
+
+.letterBox {
+    max-width: 3rem;
+    height:70%;
+    border-radius: 2px;
+    border: none;
+    outline: 1px;
+    text-align: center;
+}
