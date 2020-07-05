@@ -7,7 +7,7 @@ export default class ComputervPlayer extends React.Component{
     super(props)
     this.state = {
       answer: generateWord(parseInt(this.props.match.params.id, 10)),
-      count : 0,
+      count : 1,
       guess : [{
         word: "toys",
         cow: 2,
@@ -83,7 +83,7 @@ render() {
         }
       }}      
       />)
-  }
+  }  
   
   return(    
     <div className="CvP_container">
