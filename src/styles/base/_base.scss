@@ -6,13 +6,17 @@
 html {
     font-size: 62.5%;
     height: 100%;
-    background: linear-gradient($light-grey, $dark-grey);
-    background-size: cover;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: $m-size;
+    height: 100%;
+    background: linear-gradient($light-grey, $dark-grey);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
 }
 
 button {
@@ -36,3 +40,7 @@ button:disabled {
     padding-bottom: $s-size;
     border-bottom: 1px solid black;
   }
+
+.body-container {
+    min-height: 90vh;
+}  

@@ -13,6 +13,7 @@ import ComputervPlayer from '../components/ComputervPlayer'
 const AppRouter = () => (
   <BrowserRouter>
     <div>
+      <div className="body-container">
       <Header />
       <Switch>
         <Route path="/" component={CreateGame} exact={true} />
@@ -23,7 +24,10 @@ const AppRouter = () => (
         <Route path="/play/CvP/:id" component={ComputervPlayer}/>
         <Route component={NotFoundPage} />
       </Switch>
+      </div>
+      <div className="footer-container">
       <Footer/>
+      </div>
     </div>
   </BrowserRouter>
 );
