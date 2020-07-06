@@ -15,9 +15,9 @@ export default class RulesComputer extends React.Component {
         <p>Blahhhhhhhhhhhhhhh</p>
         <div>
         <select onChange={this.handleDropdownChange}>
-          <option value="4">Easy - 4 words</option>
-          <option value="5">Medium - 5 words</option>
-          <option value="6">Hard - 6 words</option>
+          <option value="4">Easy - 4 letter words</option>
+          <option value="5">Medium - 5 letter words</option>
+          <option value="6">Hard - 6 letter words</option>
         </select>
         <Link to={`/play/Computer/${this.state.difficulty}`}>
           <button className="start">Start Game</button>

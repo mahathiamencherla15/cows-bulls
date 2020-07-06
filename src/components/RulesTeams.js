@@ -7,9 +7,9 @@ const RulesTeams = () => (
     <p>Blahhhhhhhhhhhhhhh</p>
     <div>
     <select>
-      <option>Easy - 4 words</option>
-      <option>Medium - 5 words</option>
-      <option>Hard - 6 words</option>
+      <option>Easy - 4 letter words</option>
+      <option>Medium - 5 letter words</option>
+      <option>Hard - 6 letter words</option>
     </select>
     <button className="start">Start Game</button>
     <Link to="/">

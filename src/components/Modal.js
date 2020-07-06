@@ -42,9 +42,9 @@ class AllModal extends React.Component {
             value={this.state.difficulty}
             onChange={this.handleOnChange}            
           >
-            <option value = "4">Easy - 4 words</option>
-            <option value = "5">Medium - 5 words</option>
-            <option value = "6">Hard - 6 words</option>
+            <option value = "4">Easy - 4 letter words</option>
+            <option value = "5">Medium - 5 letter words</option>
+            <option value = "6">Hard - 6 letter words</option>
           </select><br></br>
           <button className="button" onClick={this.handleOnSubmit}>Start Game</button>
           <button className="button" onClick={this.props.handleSelectedOption}>Close</button>
