@@ -2,11 +2,15 @@ import React from 'react';
 import {generateWord, getCowsAndBulls, hasRepeatingLetter} from '../gameplay/gameComputer'
 import GuessList from './GuessList'
 import GuessTitle from './GuessTitle'
+import AlertModal from './AlertModal'
+import ResultModal from './ResultModal'
 
 export default class ComputervPlayer extends React.Component{
   constructor (props) {
     super(props)
     this.state = {
+      alert: undefined,
+      result:undefined,      
       answer: generateWord(parseInt(this.props.match.params.id, 10)),
       count : 0,
       guess : [],
@@ -14,8 +18,18 @@ export default class ComputervPlayer extends React.Component{
     }        
   }
 
+retry = () => {
+  this.setState(() => ({
+      alert: undefined,
+      result:undefined,           
+      count : 0,
+      guess : [],
+      currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]
+  }))
+}
+
 addGuess = (word, cow, bull) => {
-    this.setState((state) => ({
+    this.setState((state) => ({      
       count : state.count + 1,
       guess : state.guess.concat({
         word,
@@ -29,6 +43,10 @@ clearCurrGuess = () => {
   this.setState((state) => ({
     currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
   }))
+}
+
+closeAlert = () => {
+  this.setState(() => ({alert:undefined}))
 }
 
 handleChange = (e) => {
@@ -48,21 +66,26 @@ handleChange = (e) => {
 }
 
 handleSubmit = () => {
-  const currGuess = this.state.currGuess
-  if (currGuess.includes("")){
-    alert("Please enter a valid word")
-  }else if (hasRepeatingLetter(currGuess.join(""))){
-    alert("The word should a have unique characters")
-  }else{
-    const score = getCowsAndBulls(this.state.answer, currGuess.join(""))
-    if(score.bull === this.state.answer.length){
-      alert("You won the game!!")
-    }else{
-      this.addGuess(currGuess.join(""), score.cow, score.bull) 
-      this.clearCurrGuess()     
-    }    
-  } 
+  const currGuess = this.state.currGuess 
+  let score = {}
   
+  if (currGuess.includes("") ){
+    const alert = `Please enter a valid  ${this.state.answer.length}-letter word`
+    this.setState(() => ({alert}))     
+    
+  }else if (hasRepeatingLetter(currGuess.join(""))){
+    const alert = "The word cannot have repeating characters"
+    this.setState(() => ({alert}))         
+  }else if (this.state.count > this.state.answer.length+4){
+    this.setState(() => ({result:"loss"}))
+  }else{
+    score = getCowsAndBulls(this.state.answer, currGuess.join(""))
+    this.addGuess(currGuess.join(""), score.cow, score.bull) 
+    this.clearCurrGuess()     
+  }  
+  if(score.bull === this.state.answer.length){
+    this.setState(() => ({result:"win"}))
+  }  
 }
 
 render() {   
@@ -100,7 +123,7 @@ render() {
            />
 
         <div className="turn_container">
-          <div className="Slno"><p>{this.state.count + 1}</p></div>
+          <div className="Slno"><p>{this.state.count + 1 >9 ? ""+String(this.state.count+1) : "0"+String(this.state.count+1)} </p></div>
           <div className="Guess">
             {inputArr}            
           </div>          
@@ -109,8 +132,31 @@ render() {
             <div><p>_</p></div>
           </div>   
         </div>
-
       </div> 
+
+      { !!this.state.alert && <AlertModal 
+      alert={this.state.alert}
+      closeAlert={this.closeAlert}
+     />}
+
+     { this.state.result==="win" && <ResultModal
+        result = {this.state.result}
+        title = {"Congratulations!"}
+        message = {"You won the game"}
+        retryButton = {undefined}
+        />
+      }
+
+      { this.state.result === "loss" && <ResultModal
+      result = {this.state.result}
+      title = {"Better luck next time!"}
+      message = {"Try again"}
+      retryButton = {"yes"}
+      retry = {this.retry}
+      />
+
+      }
+      
 
     </div>   
   )
