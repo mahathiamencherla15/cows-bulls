@@ -32,7 +32,15 @@
     flex-grow: 0.88;
     //background: greenyellow;
     @media(max-width: $desktop-breakpoint) {
-        flex-grow: 0;        
+        flex-grow: 0; 
+        padding-right: 4px ;       
+    }
+
+}
+
+.Score_title div {
+    @media(max-width: $desktop-breakpoint) {
+        margin: 0 5%;        
     }
 }
 
