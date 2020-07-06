@@ -20,7 +20,7 @@ export default class GuessList extends React.Component {
                     <div className="turn_container" key = {index+length+1} >
                       <div className="Slno" key = {index+length+2} >
                         <p key = {index+length+3} >
-                          {index + 1}
+                          {index + 1 >9 ? ""+String(index+1) : "0"+String(index+1) }
                         </p>
                       </div>
                         

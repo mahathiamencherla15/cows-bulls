@@ -76,17 +76,14 @@ handleSubmit = () => {
   }else if (hasRepeatingLetter(currGuess.join(""))){
     const alert = "The word cannot have repeating characters"
     this.setState(() => ({alert}))         
-  }else if (this.state.count > 2){
+  }else if (this.state.count > this.state.answer.length+4){
     this.setState(() => ({result:"loss"}))
   }else{
     score = getCowsAndBulls(this.state.answer, currGuess.join(""))
     this.addGuess(currGuess.join(""), score.cow, score.bull) 
     this.clearCurrGuess()     
   }  
-  if (this.state.count > 2){
-    
-  }   
-  else if(score.bull === this.state.answer.length){
+  if(score.bull === this.state.answer.length){
     this.setState(() => ({result:"win"}))
   }  
 }
@@ -126,7 +123,7 @@ render() {
            />
 
         <div className="turn_container">
-          <div className="Slno"><p>{this.state.count + 1}</p></div>
+          <div className="Slno"><p>{this.state.count + 1 >9 ? ""+String(this.state.count+1) : "0"+String(this.state.count+1)} </p></div>
           <div className="Guess">
             {inputArr}            
           </div>          
@@ -144,7 +141,7 @@ render() {
 
      { this.state.result==="win" && <ResultModal
         result = {this.state.result}
-        title = {"Congratulations!!!"}
+        title = {"Congratulations!"}
         message = {"You won the game"}
         retryButton = {undefined}
         />
@@ -152,7 +149,7 @@ render() {
 
       { this.state.result === "loss" && <ResultModal
       result = {this.state.result}
-      title = {"Better luck next time!!!"}
+      title = {"Better luck next time!"}
       message = {"Try again"}
       retryButton = {"yes"}
       retry = {this.retry}
