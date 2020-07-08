@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {generateWord, getCowsAndBulls, hasRepeatingLetter} from '../gameplay/gameComputer'
 import GuessList from './GuessList'
 import GuessTitle from './GuessTitle'
@@ -14,7 +15,8 @@ export default class ComputervPlayer extends React.Component{
       answer: generateWord(parseInt(this.props.match.params.id, 10)),
       count : 0,
       guess : [],
-      currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
+      currGuess : Array(parseInt(this.props.match.params.id)).fill(""),
+      inputRefs : Array(parseInt(this.props.match.params.id)).fill(0)
     }        
   }
 
@@ -24,8 +26,17 @@ retry = () => {
       result:undefined,           
       count : 0,
       guess : [],
-      currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]
+      currGuess : Array(parseInt(this.props.match.params.id)).fill("")
   }))
+}
+
+componentDidMount() {  
+  this.state.inputRefs[0].focus()  
+}
+
+componentDidUpdate() {  
+  if(this.state.currGuess.join("") === "")
+    this.state.inputRefs[0].focus()     
 }
 
 addGuess = (word, cow, bull) => {
@@ -41,7 +52,7 @@ addGuess = (word, cow, bull) => {
 
 clearCurrGuess = () => {
   this.setState((state) => ({
-    currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
+    currGuess : Array(parseInt(this.props.match.params.id)).fill("")
   }))
 }
 
@@ -49,32 +60,44 @@ closeAlert = () => {
   this.setState(() => ({alert:undefined}))
 }
 
-handleChange = (e) => {
+handleChange = (e) => {  
   let value = e.target.value  
   if (value.length === 2){
     value = value.split("")
     value = String(value[1])
   }  
-  const id = parseInt(e.target.id)   
+  const id = parseInt(e.target.id)    
   this.setState((state) => {
-    if (/^[a-zA-Z]/.test(value) || value === "")
+    if (/^[a-zA-Z]/.test(value) || value === ""){
       state.currGuess[id] = value.toLowerCase()    
+      if(/^[a-zA-Z]/.test(value) && id != state.answer.length-1){
+        this.state.inputRefs[id+1].focus()
+      }      
+    }
+      
     return({
       currGuess : state.currGuess
     })   
-  })       
+  })    
 }
 
-handleSubmit = () => {
+validateWord = async (word) => {    
+  const res = await axios.get(`/validate/${word}`);  
+  return(res.data)
+}
+
+handleSubmit = async () => {
   const currGuess = this.state.currGuess 
   let score = {}
   
   if (currGuess.includes("") ){
     const alert = `Please enter a valid  ${this.state.answer.length}-letter word`
-    this.setState(() => ({alert}))     
-    
+    this.setState(() => ({alert}))  
   }else if (hasRepeatingLetter(currGuess.join(""))){
     const alert = "The word cannot have repeating characters"
+    this.setState(() => ({alert}))         
+  }else if(! await this.validateWord(currGuess.join(""))){    
+    const alert = "Please enter a valid English(US) word"
     this.setState(() => ({alert}))         
   }else if (this.state.count > this.state.answer.length+4){
     this.setState(() => ({result:"loss"}))
@@ -90,17 +113,16 @@ handleSubmit = () => {
 
 render() {   
   const difficulty = parseInt(this.props.match.params.id, 10)  
-  //console.log(this.state.answer)
 
   let inputArr = []
   for (let i =0; i< difficulty; i++){
-    inputArr.push(<input 
+    inputArr.push(<input  
+      ref={inputEl => (this.state.inputRefs[i] = inputEl)}
+      name = {`${i}`}
       value={this.state.currGuess[i]} 
       key={i} 
       id = {i}      
-      className="letterBox" type="text" 
-      autoComplete="off"   
-      autoFocus   
+      className="letterBox" type="text"       
       onChange={this.handleChange} 
       onKeyPress={event => {
         if (event.key === 'Enter') {
@@ -108,7 +130,7 @@ render() {
         }
       }}      
       />)
-  }  
+  }   
   
   return(    
     <div className="CvP_container">
@@ -154,10 +176,7 @@ render() {
       retryButton = {"yes"}
       retry = {this.retry}
       />
-
-      }
-      
-
+      }    
     </div>   
   )
 };        
