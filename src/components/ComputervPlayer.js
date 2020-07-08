@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import {generateWord, getCowsAndBulls, hasRepeatingLetter} from '../gameplay/gameComputer'
 import GuessList from './GuessList'
 import GuessTitle from './GuessTitle'
@@ -14,7 +14,8 @@ export default class ComputervPlayer extends React.Component{
       answer: generateWord(parseInt(this.props.match.params.id, 10)),
       count : 0,
       guess : [],
-      currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
+      currGuess : Array(parseInt(this.props.match.params.id)).fill(""),
+      inputRefs : Array(parseInt(this.props.match.params.id)).fill(0)
     }        
   }
 
@@ -24,8 +25,17 @@ retry = () => {
       result:undefined,           
       count : 0,
       guess : [],
-      currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]
+      currGuess : Array(parseInt(this.props.match.params.id)).fill("")
   }))
+}
+
+componentDidMount() {  
+  this.state.inputRefs[0].focus()  
+}
+
+componentDidUpdate() {  
+  if(this.state.currGuess.join("") === "")
+    this.state.inputRefs[0].focus()     
 }
 
 addGuess = (word, cow, bull) => {
@@ -41,7 +51,7 @@ addGuess = (word, cow, bull) => {
 
 clearCurrGuess = () => {
   this.setState((state) => ({
-    currGuess : this.props.match.params.id === "4" ? ["","","",""] :this.props.match.params.id === "5"? ["","","","",""]: ["","","","","",""]  
+    currGuess : Array(parseInt(this.props.match.params.id)).fill("")
   }))
 }
 
@@ -49,20 +59,25 @@ closeAlert = () => {
   this.setState(() => ({alert:undefined}))
 }
 
-handleChange = (e) => {
+handleChange = (e) => {  
   let value = e.target.value  
   if (value.length === 2){
     value = value.split("")
     value = String(value[1])
   }  
-  const id = parseInt(e.target.id)   
+  const id = parseInt(e.target.id)    
   this.setState((state) => {
-    if (/^[a-zA-Z]/.test(value) || value === "")
+    if (/^[a-zA-Z]/.test(value) || value === ""){
       state.currGuess[id] = value.toLowerCase()    
+      if(/^[a-zA-Z]/.test(value) && id != state.answer.length-1){
+        this.state.inputRefs[id+1].focus()
+      }      
+    }
+      
     return({
       currGuess : state.currGuess
     })   
-  })       
+  })    
 }
 
 handleSubmit = () => {
@@ -90,17 +105,19 @@ handleSubmit = () => {
 
 render() {   
   const difficulty = parseInt(this.props.match.params.id, 10)  
+  console.log(this.state.inputRefs)
   //console.log(this.state.answer)
+  
 
   let inputArr = []
   for (let i =0; i< difficulty; i++){
-    inputArr.push(<input 
+    inputArr.push(<input  
+      ref={inputEl => (this.state.inputRefs[i] = inputEl)}
+      name = {`${i}`}
       value={this.state.currGuess[i]} 
       key={i} 
       id = {i}      
-      className="letterBox" type="text" 
-      autoComplete="off"   
-      autoFocus   
+      className="letterBox" type="text"       
       onChange={this.handleChange} 
       onKeyPress={event => {
         if (event.key === 'Enter') {
@@ -108,7 +125,7 @@ render() {
         }
       }}      
       />)
-  }  
+  }   
   
   return(    
     <div className="CvP_container">
@@ -154,10 +171,7 @@ render() {
       retryButton = {"yes"}
       retry = {this.retry}
       />
-
-      }
-      
-
+      }    
     </div>   
   )
 };        
