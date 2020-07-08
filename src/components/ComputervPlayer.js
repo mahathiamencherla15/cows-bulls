@@ -1,4 +1,5 @@
-import React, { createRef } from 'react';
+import React from 'react';
+import axios from 'axios';
 import {generateWord, getCowsAndBulls, hasRepeatingLetter} from '../gameplay/gameComputer'
 import GuessList from './GuessList'
 import GuessTitle from './GuessTitle'
@@ -80,16 +81,25 @@ handleChange = (e) => {
   })    
 }
 
+validateWord = async (word) => {  
+  console.log(word)
+  const res = await axios.get(`/validate/${word}`);
+  console.log(res.data, typeof(res.data))
+  return(res.data)
+}
+
 handleSubmit = () => {
   const currGuess = this.state.currGuess 
   let score = {}
   
   if (currGuess.includes("") ){
     const alert = `Please enter a valid  ${this.state.answer.length}-letter word`
-    this.setState(() => ({alert}))     
-    
+    this.setState(() => ({alert}))  
   }else if (hasRepeatingLetter(currGuess.join(""))){
     const alert = "The word cannot have repeating characters"
+    this.setState(() => ({alert}))         
+  }else if(!this.validateWord(currGuess.join(""))){    
+    const alert = "Please enter a valid English(US) word"
     this.setState(() => ({alert}))         
   }else if (this.state.count > this.state.answer.length+4){
     this.setState(() => ({result:"loss"}))
@@ -104,10 +114,7 @@ handleSubmit = () => {
 }
 
 render() {   
-  const difficulty = parseInt(this.props.match.params.id, 10)  
-  console.log(this.state.inputRefs)
-  //console.log(this.state.answer)
-  
+  const difficulty = parseInt(this.props.match.params.id, 10)      
 
   let inputArr = []
   for (let i =0; i< difficulty; i++){
