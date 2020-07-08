@@ -81,14 +81,12 @@ handleChange = (e) => {
   })    
 }
 
-validateWord = async (word) => {  
-  console.log(word)
-  const res = await axios.get(`/validate/${word}`);
-  console.log(res.data, typeof(res.data))
+validateWord = async (word) => {    
+  const res = await axios.get(`/validate/${word}`);  
   return(res.data)
 }
 
-handleSubmit = () => {
+handleSubmit = async () => {
   const currGuess = this.state.currGuess 
   let score = {}
   
@@ -98,7 +96,7 @@ handleSubmit = () => {
   }else if (hasRepeatingLetter(currGuess.join(""))){
     const alert = "The word cannot have repeating characters"
     this.setState(() => ({alert}))         
-  }else if(!this.validateWord(currGuess.join(""))){    
+  }else if(! await this.validateWord(currGuess.join(""))){    
     const alert = "Please enter a valid English(US) word"
     this.setState(() => ({alert}))         
   }else if (this.state.count > this.state.answer.length+4){
@@ -114,7 +112,7 @@ handleSubmit = () => {
 }
 
 render() {   
-  const difficulty = parseInt(this.props.match.params.id, 10)      
+  const difficulty = parseInt(this.props.match.params.id, 10)  
 
   let inputArr = []
   for (let i =0; i< difficulty; i++){
